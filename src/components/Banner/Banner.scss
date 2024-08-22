@@ -1,0 +1,64 @@
+.banner {
+  .container {
+    .banner_bg {
+      background-image: url("./public/hero-xl-x1.webp");
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 600px;
+      border-radius: 16px;
+      h1 {
+        letter-spacing: -2.4px;
+        span {
+          font-size: 63px;
+          letter-spacing: -1.89px;
+          color: #1dbf73;
+        }
+      }
+      .search_bar {
+        width: 40%;
+        .search_form {
+          border-radius: 12px;
+          .search_input {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            input {
+              height: 60px;
+              border-radius: 12px;
+              outline: none;
+              width: 80%;
+            }
+            button {
+              background-color: #003912;
+              border-radius: 12px;
+              height: 48px;
+              width: 48px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              .button_icon {
+                fill: white;
+              }
+              &:hover {
+                background-color: #126f43;
+              }
+            }
+          }
+        }
+      }
+      .trustedby {
+        color: #809d89;
+        span {
+          font-size: 12px;
+        }
+        img {
+          filter: brightness(0) saturate(100%) invert(42%) sepia(24%)
+            saturate(1121%) hue-rotate(95deg) brightness(96%) contrast(87%);
+          height: 50px;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}

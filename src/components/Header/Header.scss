@@ -1,0 +1,11 @@
+header {
+  .container {
+    .header_content {
+      nav {
+        .ant-dropdown-open svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
