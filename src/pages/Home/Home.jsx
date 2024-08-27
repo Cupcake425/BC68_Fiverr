@@ -495,7 +495,7 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <div className="flex gap-5 container mt-5">
+      <div className="flex flex flex-wrap gap-5 container mt-5">
         {item.map((item, index) => {
           return (
             <JobCard
@@ -503,7 +503,7 @@ const Home = () => {
               img={item.img}
               text={item.text}
               className={
-                "h-36 w-36 border border-solid rounded-2xl hover:border-green-600 hover:text-green-600"
+                "h-36 w-36  border border-solid rounded-2xl hover:border-green-600 hover:text-green-600"
               }
             />
           );
@@ -519,7 +519,7 @@ const Home = () => {
           <br />
           talent at your fingertips
         </h2>
-        <div className="flex gap-5 mt-5">
+        <div className="flex flex-wrap gap-5 mt-5">
           {item2.map((item, index) => {
             return (
               <JobCard

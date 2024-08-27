@@ -51,52 +51,52 @@ const SliderCarousel = () => {
   const item = [
     {
       text: "Website Development",
-      img: "./public/img_slider/website-development.png",
+      img: "/img_slider/website-development.png",
       bgColor: "#00732e",
     },
     {
       text: "Logo Design",
-      img: "./public/img_slider/logo-design.png",
+      img: "/img_slider/logo-design.png",
       bgColor: "#ff7640",
     },
     {
       text: "SEO",
-      img: "./public/img_slider/seo.png",
+      img: "/img_slider/seo.png",
       bgColor: "#003912",
     },
     {
       text: "Architecture & Interior Design",
-      img: "./public/img_slider/architecture-design.png",
+      img: "/img_slider/architecture-design.png",
       bgColor: "#4d1727",
     },
     {
       text: "Data & Science",
-      img: "./public/img_slider/data-science.png",
+      img: "/img_slider/data-science.png",
       bgColor: "#8f2900",
     },
     {
       text: "E-Commerce Marketing",
-      img: "./public/img_slider/e-commerce.png",
+      img: "/img_slider/e-commerce.png",
       bgColor: "#00732e",
     },
     {
       text: "Product PhotoGraphy",
-      img: "./public/img_slider/product-photography.png",
+      img: "/img_slider/product-photography.png",
       bgColor: "#687200",
     },
     {
       text: "Software Development",
-      img: "./public/img_slider/software-development.png",
+      img: "/img_slider/software-development.png",
       bgColor: "#254200",
     },
     {
       text: "Video Editing",
-      img: "./public/img_slider/video-editing.png",
+      img: "/img_slider/video-editing.png",
       bgColor: "#be5272",
     },
     {
       text: "Voice Over",
-      img: "./public/img_slider/voice-over.png",
+      img: "/img_slider/voice-over.png",
       bgColor: "#421300",
     },
   ];

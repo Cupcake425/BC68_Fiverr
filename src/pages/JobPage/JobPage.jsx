@@ -6,9 +6,11 @@ import { DownOutlined } from "@ant-design/icons";
 import { binhLuanService } from "../../services/binhLuan.service";
 import { NotificationContext } from "../../App";
 import { useSelector } from "react-redux";
+import { Tabs } from "antd";
 
 const JobPage = () => {
   const { handleNotification } = useContext(NotificationContext);
+  const { user } = useSelector((state) => state.authSlice);
   const { id } = useParams();
   const [job, setJob] = useState([]);
   const [open, setOpen] = useState(null);
@@ -16,13 +18,11 @@ const JobPage = () => {
   const [cmt, setCmt] = useState([]);
   const [binhLuan, setBinhLuan] = useState({
     maCongViec: id,
-    maNguoiBinhLuan: "2332",
-    ngayBinhLuan: "1/7/2024",
+    maNguoiBinhLuan: user.user.id,
+    ngayBinhLuan: new Date().toLocaleString("en-GB", { timeZone: "UTC" }),
     noiDung: "",
     saoBinhLuan: "5",
   });
-  const { user } = useSelector((state) => state.authSlice);
-  console.log(binhLuan);
 
   useEffect(() => {
     congViecService
@@ -44,6 +44,11 @@ const JobPage = () => {
       .then((res) => {
         console.log(res);
         handleNotification(res.data.message, "success");
+        // Refetch comment từ bình luận mới gửi
+        binhLuanService
+          .getBinhLuan(id)
+          .then((res) => setCmt(res.data.content))
+          .catch((err) => console.log(err));
       })
       .catch((err) => {
         console.log(err);
@@ -67,6 +72,305 @@ const JobPage = () => {
     "After ordering my gig you will see some basic questions where I will determine what are your exact needs and can provide you with logo. Not much!",
     "Yes, All my designs are 100% unique. I design from scratch. No clipart No template.",
     "The Source and Vector files are the files used to create your logo. They can be used to resize or edit your logo in any way and are generally required when making merchandise, etc. These files are available in AI, PSD, EPS, PDF, SVG and CDR",
+  ];
+
+  const items = [
+    {
+      key: "1",
+      label: "Basic",
+      children: (
+        <div className="text-gray-500 text-xl">
+          <p className="text-2xl font-bold">$120</p>
+          <p>Save up to 10% with Subscribe to Save</p>
+          <p>
+            <span className="font-semibold">BASIC</span>&nbsp;1 logo concept
+            including vector & source files + 3 revisions
+          </p>
+          <div className="flex items-center gap-2 text-sm text-gray-700 font-semibold my-3">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path>
+              <path d="M9 4H7v5h5V7H9V4z"></path>
+            </svg>
+            <span>6-day delivery</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M4.50001 11.4999C6.40001 13.3999 9.60001 13.3999 11.5 11.4999C12.2 10.7999 12.7 9.7999 12.9 8.7999L14.9 9.0999C14.7 10.5999 14 11.8999 13 12.8999C10.3 15.5999 5.90001 15.5999 3.10001 12.8999L0.900012 15.0999L0.200012 8.6999L6.60001 9.3999L4.50001 11.4999Z"></path>
+              <path d="M15.8 7.2999L9.40001 6.5999L11.5 4.4999C9.60001 2.5999 6.40001 2.5999 4.50001 4.4999C3.80001 5.1999 3.30001 6.1999 3.10001 7.1999L1.10001 6.8999C1.30001 5.3999 2.00001 4.0999 3.00001 3.0999C4.40001 1.6999 6.10001 1.0999 7.90001 1.0999C9.70001 1.0999 11.5 1.7999 12.8 3.0999L15 0.899902L15.8 7.2999Z"></path>
+            </svg>
+            <span>3 Revisions</span>
+          </div>
+          <div className="text-sm">
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>1 concept included</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Logo transparency</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Vector file</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Printable file</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Include 3D mockup</span>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      key: "2",
+      label: "Standard",
+      children: (
+        <div className="text-gray-500 text-xl">
+          <p className="text-2xl font-bold">$220</p>
+          <p>Save up to 10% with Subscribe to Save</p>
+          <p>
+            <span className="font-semibold">BEST CHOICE</span>&nbsp;2 logo
+            concepts including vector & source files + unlimited revisions +
+            social media kit
+          </p>
+          <div className="flex items-center gap-2 text-sm text-gray-700 font-semibold my-3">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path>
+              <path d="M9 4H7v5h5V7H9V4z"></path>
+            </svg>
+            <span>6-day delivery</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M4.50001 11.4999C6.40001 13.3999 9.60001 13.3999 11.5 11.4999C12.2 10.7999 12.7 9.7999 12.9 8.7999L14.9 9.0999C14.7 10.5999 14 11.8999 13 12.8999C10.3 15.5999 5.90001 15.5999 3.10001 12.8999L0.900012 15.0999L0.200012 8.6999L6.60001 9.3999L4.50001 11.4999Z"></path>
+              <path d="M15.8 7.2999L9.40001 6.5999L11.5 4.4999C9.60001 2.5999 6.40001 2.5999 4.50001 4.4999C3.80001 5.1999 3.30001 6.1999 3.10001 7.1999L1.10001 6.8999C1.30001 5.3999 2.00001 4.0999 3.00001 3.0999C4.40001 1.6999 6.10001 1.0999 7.90001 1.0999C9.70001 1.0999 11.5 1.7999 12.8 3.0999L15 0.899902L15.8 7.2999Z"></path>
+            </svg>
+            <span>Unlimited Revisions</span>
+          </div>
+          <div className="text-sm">
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>2 concept included</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Logo transparency</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Vector file</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Printable file</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Include 3D mockup</span>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      key: "3",
+      label: "Premium",
+      children: (
+        <div className="text-gray-500 text-xl">
+          <p className="text-2xl font-bold">$320</p>
+          <p>Save up to 10% with Subscribe to Save</p>
+          <p>
+            <span className="font-semibold">PREMIUM</span>&nbsp;3 logo concepts
+            including vector & source files + unlimited revisions + social media
+            kit
+          </p>
+          <div className="flex items-center gap-2 text-sm text-gray-700 font-semibold my-3">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"></path>
+              <path d="M9 4H7v5h5V7H9V4z"></path>
+            </svg>
+            <span>6-day delivery</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M4.50001 11.4999C6.40001 13.3999 9.60001 13.3999 11.5 11.4999C12.2 10.7999 12.7 9.7999 12.9 8.7999L14.9 9.0999C14.7 10.5999 14 11.8999 13 12.8999C10.3 15.5999 5.90001 15.5999 3.10001 12.8999L0.900012 15.0999L0.200012 8.6999L6.60001 9.3999L4.50001 11.4999Z"></path>
+              <path d="M15.8 7.2999L9.40001 6.5999L11.5 4.4999C9.60001 2.5999 6.40001 2.5999 4.50001 4.4999C3.80001 5.1999 3.30001 6.1999 3.10001 7.1999L1.10001 6.8999C1.30001 5.3999 2.00001 4.0999 3.00001 3.0999C4.40001 1.6999 6.10001 1.0999 7.90001 1.0999C9.70001 1.0999 11.5 1.7999 12.8 3.0999L15 0.899902L15.8 7.2999Z"></path>
+            </svg>
+            <span>Unlimited Revisions</span>
+          </div>
+          <div className="text-sm">
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>3 concept included</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Logo transparency</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Vector file</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Printable file</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 11 9"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentFill"
+              >
+                <path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path>
+              </svg>
+              <span>Include 3D mockup</span>
+            </div>
+          </div>
+        </div>
+      ),
+    },
   ];
 
   return (
@@ -427,7 +731,13 @@ const JobPage = () => {
             <textarea
               value={binhLuan.noiDung}
               onChange={(e) =>
-                setBinhLuan({ ...binhLuan, noiDung: e.target.value })
+                setBinhLuan({
+                  ...binhLuan,
+                  noiDung: e.target.value,
+                  ngayBinhLuan: new Date().toLocaleString("en-GB", {
+                    timeZone: "UTC",
+                  }),
+                })
               }
               className="border mt-5 p-5 border-gray-600 rounded-2xl focus:outline-none"
               cols="100"
@@ -436,7 +746,12 @@ const JobPage = () => {
             <button onClick={handlePostBinhLuan}>ADD COMMENT</button>
           </div>
         </div>
-        <div style={{ flex: 1 }}>asdasdasdasdasd</div>
+        <div
+          className="self-start sticky top-36 border border-solid p-6 rounded-2xl border-gray-400"
+          style={{ flex: 1 }}
+        >
+          <Tabs defaultActiveKey="1" items={items} />
+        </div>
       </div>
     </div>
   );

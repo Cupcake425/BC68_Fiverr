@@ -6,8 +6,16 @@ import IconSearch from "../Icon/IconSearch";
 import useDebounce from "../../hooks/useDebounce";
 import { pathDefault } from "../../common/path";
 import { congViecService } from "../../services/congViec.service";
+import useResponsive from "../../hooks/useResponsive";
 
 const Banner = () => {
+  const isResponsive = useResponsive({
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    xxl: 1536,
+  });
   const navigate = useNavigate();
   const [valueSearch, setValueSearch] = useState("");
   const [listJobSuggest, setListJobSuggest] = useState([]);
@@ -73,12 +81,19 @@ const Banner = () => {
   return (
     <div className="banner mt-5">
       <div className="container">
-        <div className="banner_bg flex justify-between items-center flex-col ">
-          <h1 className="text-white text-6xl text-center mt-28">
-            Find the right <span className="italic">freelance</span> <br />
-            service, right away
-          </h1>
-          <div className="search_bar mb-32">
+        <div className="banner_bg flex justify-between items-center flex-col">
+          {isResponsive.lg ? (
+            <h1 className="text-white text-4xl sm:text-5xl text-center mt-5">
+              Scale your <br /> professional workforce <br /> with freelancers
+            </h1>
+          ) : (
+            <h1 className="text-white text-6xl text-center mt-28 lg:mt-14">
+              Find the right <span className="italic">freelance</span> <br />
+              service, right away
+            </h1>
+          )}
+
+          <div className="search_bar my-20 lg:my-5">
             <form
               onSubmit={handleSubmit}
               className="search_form bg-white ps-5 pe-2"
@@ -109,37 +124,39 @@ const Banner = () => {
               </Dropdown>
             </form>
           </div>
-          <div className="trustedby flex justify-center items-center gap-8 mb-5">
-            <span>Trusted by:</span>
-            <img
-              src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/meta.ff37dd3.svg"
-              alt="meta"
-              width="70"
-              height="14"
-            />
-            <img
-              src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/google2x.06d74c8.png"
-              alt=""
-            />
-            <img
-              src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/netflix2x.887e47e.png"
-              alt=""
-            />
-            <img
-              src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/pandg2x.6dc32e4.png"
-              alt=""
-            />
-            <img
-              src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/paypal2x.22728be.png"
-              alt=""
-            />
-            <img
-              src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/payoneer.7c1170d.svg"
-              alt="Payoneer"
-              width="82.42"
-              height="16"
-            />
-          </div>
+          {!isResponsive.lg && (
+            <div className="trustedby flex justify-center items-center gap-8 mb-5">
+              <span>Trusted by:</span>
+              <img
+                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/meta.ff37dd3.svg"
+                alt="meta"
+                width="70"
+                height="14"
+              />
+              <img
+                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/google2x.06d74c8.png"
+                alt=""
+              />
+              <img
+                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/netflix2x.887e47e.png"
+                alt=""
+              />
+              <img
+                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/pandg2x.6dc32e4.png"
+                alt=""
+              />
+              <img
+                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/paypal2x.22728be.png"
+                alt=""
+              />
+              <img
+                src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/payoneer.7c1170d.svg"
+                alt="Payoneer"
+                width="82.42"
+                height="16"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -82,7 +82,7 @@ const FormSearchProduct = ({ className }) => {
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className="pl-4 rounded border border-gray-400 flex items-center justify-between min-w-[400px]"
+            className="pl-4 rounded border border-gray-400 flex items-center justify-between min-w-[100px] md:min-w-72 lg:min-w-96 "
           >
             <input
               type="text"
