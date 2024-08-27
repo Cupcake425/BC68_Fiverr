@@ -495,7 +495,7 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <div className="flex flex flex-wrap gap-5 container mt-5">
+      <div className="flex flex-wrap gap-5 container mt-5">
         {item.map((item, index) => {
           return (
             <JobCard
