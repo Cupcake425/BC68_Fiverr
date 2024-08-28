@@ -225,7 +225,7 @@ const Header = () => {
               } duration-300`}
             />
           </div>
-          <nav className="header_navigation space-x-1 lg:space-x-2 xl:space-x-5">
+          <nav className="header_navigation space-x-2 lg:space-x-3 xl:space-x-5">
             {!isResponsive.lg && (
               <>
                 <Dropdown

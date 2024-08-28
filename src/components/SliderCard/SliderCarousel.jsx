@@ -4,8 +4,16 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./SliderCarousel.scss";
 import { Link } from "react-router-dom";
+import useResponsive from "../../hooks/useResponsive";
 
 const SliderCarousel = () => {
+  const isResponsive = useResponsive({
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    xxl: 1536,
+  });
   const NextArrow = ({ className, style, onClick }) => {
     return (
       <div
@@ -40,8 +48,20 @@ const SliderCarousel = () => {
   const settings = {
     arrows: true,
     speed: 500,
-    slidesToShow: 6.5,
-    slidesToScroll: 4,
+    slidesToShow: !isResponsive.xl
+      ? 6.5
+      : !isResponsive.lg
+      ? 5
+      : !isResponsive.md
+      ? 4
+      : 3,
+    slidesToScroll: !isResponsive.xl
+      ? 4
+      : !isResponsive.lg
+      ? 5
+      : !isResponsive.md
+      ? 4
+      : 3,
     infinite: false,
     draggable: false,
     nextArrow: <NextArrow />,

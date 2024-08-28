@@ -2,8 +2,16 @@ import React from "react";
 import Banner from "../../components/Banner/Banner";
 import JobCard from "../../components/JobCard/JobCard";
 import SliderCarousel from "../../components/SliderCard/SliderCarousel";
+import useResponsive from "../../hooks/useResponsive";
 
 const Home = () => {
+  const isResponsive = useResponsive({
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    xxl: 1536,
+  });
   const item = [
     {
       img: (
@@ -540,7 +548,7 @@ const Home = () => {
         style={{ backgroundColor: "#003912" }}
       >
         <div className="flex justify-between items-center px-28 py-12 ">
-          <div>
+          <div style={{ flex: 1 }}>
             <svg
               className="mb-5"
               width="139"
@@ -557,21 +565,15 @@ const Home = () => {
                 <path d="M139 24.5201V24.5629C139 25.814 138.003 26.8294 136.771 26.8294C135.541 26.8294 134.542 25.8152 134.542 24.5629V24.5201C134.542 23.269 135.539 22.2537 136.771 22.2537C138.001 22.2537 139 23.269 139 24.5201Z"></path>
               </g>
             </svg>
-            <p className="text-white text-5xl leading-snug">
-              New e-Commerce <br />
-              project management
-              <br />
-              service&nbsp;
-              <span className="font-bold">
-                made for your <br /> business
-              </span>
+            <p className="text-white text-3xl xl:text-5xl md:text-4xl leading-snug ">
+              New e-Commerce project management service&nbsp;
+              <span className="font-bold">made for your business</span>
             </p>
             <p className="text-white mt-5">
               An experienced e-Commerce project manager will plan, coordinate,
-              and <br /> execute your project. Overseeing a team of e-Commerce
-              experts, they'll <br /> handle everything from site building,
-              design and content to optimization, <br /> marketing strategies,
-              and UGC videos.
+              and execute your project. Overseeing a team of e-Commerce experts,
+              they'll handle everything from site building, design and content
+              to optimization, marketing strategies, and UGC videos.
             </p>
             <p className="text-white mt-5 font-bold">
               To get started, you should have:
@@ -590,9 +592,11 @@ const Home = () => {
               Get Started
             </button>
           </div>
-          <div>
-            <img src="./public/X1.png" alt="" />
-          </div>
+          {!isResponsive.lg && (
+            <div style={{ flex: 1 }}>
+              <img src="./public/X1.png" alt="" />
+            </div>
+          )}
         </div>
       </div>
     </div>
