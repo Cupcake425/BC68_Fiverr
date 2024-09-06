@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import IconLogoHeader from "../Icon/IconLogoHeader";
 import "./Footer.scss";
 
 const Footer = () => {
