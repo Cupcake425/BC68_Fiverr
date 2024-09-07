@@ -18,7 +18,7 @@ const JobPage = () => {
     xxl: 1536,
   });
   const { handleNotification } = useContext(NotificationContext);
-  const { user } = useSelector((state) => state.authSlice);
+  const { user } = useSelector((state) => state.authSlice) || { user: null };
   const { id } = useParams();
   const [job, setJob] = useState([]);
   const [open, setOpen] = useState(null);
