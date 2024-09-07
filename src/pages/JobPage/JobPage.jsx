@@ -18,7 +18,9 @@ const JobPage = () => {
     xxl: 1536,
   });
   const { handleNotification } = useContext(NotificationContext);
-  const { user } = useSelector((state) => state.authSlice) || { user: null };
+  const { user } = useSelector((state) => state.authSlice) || {
+    user: undefined,
+  };
   const { id } = useParams();
   const [job, setJob] = useState([]);
   const [open, setOpen] = useState(null);
@@ -26,7 +28,7 @@ const JobPage = () => {
   const [cmt, setCmt] = useState([]);
   const [binhLuan, setBinhLuan] = useState({
     maCongViec: id,
-    maNguoiBinhLuan: user.user.id || "99",
+    maNguoiBinhLuan: user.user.id,
     ngayBinhLuan: new Date().toLocaleString("en-GB", { timeZone: "UTC" }),
     noiDung: "",
     saoBinhLuan: "5",
