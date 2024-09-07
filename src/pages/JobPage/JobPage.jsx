@@ -26,7 +26,7 @@ const JobPage = () => {
   const [cmt, setCmt] = useState([]);
   const [binhLuan, setBinhLuan] = useState({
     maCongViec: id,
-    maNguoiBinhLuan: user.user.id,
+    maNguoiBinhLuan: user.user.id || "99",
     ngayBinhLuan: new Date().toLocaleString("en-GB", { timeZone: "UTC" }),
     noiDung: "",
     saoBinhLuan: "5",
@@ -792,7 +792,7 @@ const JobPage = () => {
                     ]}
                   />
                   <button
-                    className="border py-2 px-3 rounded ms-4 border-gray-600"
+                    className="border py-2 px-3 rounded ms-4 border-gray-600 hover:bg-gray-600 hover:text-white hover:border-white"
                     onClick={handlePostBinhLuan}
                   >
                     ADD COMMENT
@@ -1225,7 +1225,7 @@ const JobPage = () => {
                     ]}
                   />
                   <button
-                    className="border py-2 px-3 rounded ms-4 border-gray-600"
+                    className="border py-2 px-3 rounded ms-4 border-gray-600 hover:bg-gray-600 hover:text-white hover:border-white"
                     onClick={handlePostBinhLuan}
                   >
                     ADD COMMENT

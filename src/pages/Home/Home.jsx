@@ -541,7 +541,7 @@ const Home = () => {
         </div>
       </div>
       <div className="container flex items-center justify-center my-5">
-        <video src={"./public/Video/VideoFiverr.mp4"} controls></video>
+        <video src={"/Video/VideoFiverr.mp4"} controls></video>
       </div>
       <div
         className="container mt-24 rounded-xl"
@@ -594,7 +594,7 @@ const Home = () => {
           </div>
           {!isResponsive.lg && (
             <div style={{ flex: 1 }}>
-              <img src="./public/X1.png" alt="" />
+              <img src="/X1.png" alt="" />
             </div>
           )}
         </div>
