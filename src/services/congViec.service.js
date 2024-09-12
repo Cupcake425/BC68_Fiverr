@@ -6,10 +6,14 @@ export const congViecService = {
   layMenuLoaiCongViec: () => {
     return http.get(`/cong-viec/lay-menu-loai-cong-viec`);
   },
-  layCongViecTheoChiTietLoai: (id) => {
-    return http.get(`/cong-viec/lay-cong-viec-theo-chi-tiet-loai/${id}`);
-  },
   layCongViecChiTiet: (id) => {
     return http.get(`/cong-viec/lay-cong-viec-chi-tiet/${id}`);
+  },
+  postCongViec: (token, data) => {
+    return http.post(`/cong-viec`, data, {
+      headers: {
+        token,
+      },
+    });
   },
 };

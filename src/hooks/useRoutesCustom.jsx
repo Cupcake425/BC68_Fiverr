@@ -12,6 +12,7 @@ import AdminLogin from "../pages/AdminLogin/AdminLogin";
 import CreateUser from "../pages/CreateUser/CreateUser";
 import { Skeleton } from "antd";
 import JobPage from "../pages/JobPage/JobPage";
+import CreateJob from "../pages/CreateJob/CreateJob";
 
 const ManagerUser = React.lazy(() =>
   import("../pages/ManagerUser/ManagerUser")
@@ -65,6 +66,10 @@ const useRoutesCustom = () => {
         {
           path: "create-user",
           element: <CreateUser />,
+        },
+        {
+          path: "create-job",
+          element: <CreateJob />,
         },
       ],
     },

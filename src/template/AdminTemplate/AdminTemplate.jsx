@@ -21,7 +21,6 @@ const AdminTemplate = () => {
 
   useEffect(() => {
     let dataLocal = getLocalStorage("user");
-    console.log(dataLocal);
     dataLocal.user.role !== "ADMIN"
       ? (window.location.href = "http://google.com")
       : null;
@@ -44,12 +43,12 @@ const AdminTemplate = () => {
             {
               key: "2",
               icon: <VideoCameraOutlined />,
-              label: <Link>Công việc</Link>,
+              label: <Link to={"/admin/create-user"}>Thêm người dùng</Link>,
             },
             {
               key: "3",
               icon: <UploadOutlined />,
-              label: <Link>Thuê công việc</Link>,
+              label: <Link to={"/admin/create-job"}>Tạo công việc</Link>,
             },
           ]}
         />

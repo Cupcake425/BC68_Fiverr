@@ -48,7 +48,7 @@ const JobPage = () => {
 
   const handlePostBinhLuan = () => {
     binhLuanService
-      .postBinhLuan(user.token, binhLuan)
+      .postBinhLuan(user?.token, binhLuan)
       .then((res) => {
         console.log(res);
         handleNotification(res.data.message, "success");
