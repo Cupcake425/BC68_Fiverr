@@ -5,15 +5,15 @@ import { congViecService } from "../../services/congViec.service";
 const ListJobPage = () => {
   const [searchParam, setSearchParam] = useSearchParams();
   const [listJob, setListJob] = useState([]);
+  let tenCongViec = searchParam.get("tenCongViec");
   useEffect(() => {
-    let tenCongViec = searchParam.get("tenCongViec");
     congViecService
       .layCongViecTheoTen(tenCongViec)
       .then((res) => {
         setListJob(res.data.content);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [tenCongViec]);
 
   const renderListJob = () => {
     return (

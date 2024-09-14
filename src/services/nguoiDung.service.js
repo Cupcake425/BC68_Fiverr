@@ -17,4 +17,7 @@ export const nguoiDungService = {
       },
     });
   },
+  updateUser: (id, data) => {
+    return http.put(`/users/${id}`, data);
+  },
 };

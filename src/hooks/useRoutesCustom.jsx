@@ -13,6 +13,7 @@ import CreateUser from "../pages/CreateUser/CreateUser";
 import { Skeleton } from "antd";
 import JobPage from "../pages/JobPage/JobPage";
 import CreateJob from "../pages/CreateJob/CreateJob";
+import ManagerJob from "../pages/ManagerJob/ManagerJob";
 
 const ManagerUser = React.lazy(() =>
   import("../pages/ManagerUser/ManagerUser")
@@ -70,6 +71,10 @@ const useRoutesCustom = () => {
         {
           path: "create-job",
           element: <CreateJob />,
+        },
+        {
+          path: "manager-job",
+          element: <ManagerJob />,
         },
       ],
     },

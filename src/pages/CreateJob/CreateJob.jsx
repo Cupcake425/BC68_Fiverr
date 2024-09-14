@@ -12,8 +12,8 @@ const CreateJob = () => {
     tenCongViec: "",
     danhGia: 0,
     giaTien: 0,
-    nguoiTao: 0,
-    hinhAnh: "",
+    nguoiTao: user?.id,
+    hinhAnh: "https://fiverrnew.cybersoft.edu.vn/images/cv34.jpg",
     moTa: "",
     maChiTietLoaiCongViec: 0,
     moTaNgan: "",
@@ -55,18 +55,18 @@ const CreateJob = () => {
           onChange={handleChange}
         />
         <InputCustom
-          contentLabel="Phone"
+          contentLabel="Giá tiền"
           name="giaTien"
           type="number"
           onChange={handleChange}
         />
         <InputCustom
-          contentLabel="Người tạo"
-          name="nguoiTao"
+          contentLabel="Mã chi tiết loại"
+          name="maChiTietLoaiCongViec"
           onChange={handleChange}
           type="number"
         />
-        <InputCustom contentLabel="Hình ảnh" name="hinhAnh" type="file" />
+        {/* <InputCustom contentLabel="Hình ảnh" name="hinhAnh" type="file" /> */}
         <InputCustom contentLabel="Mô tả" name="moTa" onChange={handleChange} />
         <InputCustom
           contentLabel="Mô tả ngắn"

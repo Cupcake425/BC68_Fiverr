@@ -5,6 +5,7 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  ApartmentOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import { getLocalStorage } from "../../utils/utils";
@@ -49,6 +50,11 @@ const AdminTemplate = () => {
               key: "3",
               icon: <UploadOutlined />,
               label: <Link to={"/admin/create-job"}>Tạo công việc</Link>,
+            },
+            {
+              key: "4",
+              icon: <ApartmentOutlined />,
+              label: <Link to={"/admin/manager-job"}>Quản lý công việc</Link>,
             },
           ]}
         />

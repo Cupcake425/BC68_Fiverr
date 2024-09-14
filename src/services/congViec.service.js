@@ -16,4 +16,14 @@ export const congViecService = {
       },
     });
   },
+  getAllCongViec: () => {
+    return http.get(`/cong-viec`);
+  },
+  deleteCongViec: (token, id) => {
+    return http.delete(`/cong-viec/${id}`, {
+      headers: {
+        token,
+      },
+    });
+  },
 };
