@@ -8,24 +8,13 @@ import {
   ApartmentOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
-import { getLocalStorage } from "../../utils/utils";
-import { useDispatch } from "react-redux";
-import { getValueUserApi } from "../../redux/nguoiDungSlice";
 import { Link, Outlet } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const AdminTemplate = () => {
-  const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-
-  useEffect(() => {
-    let dataLocal = getLocalStorage("user");
-    dataLocal.user.role !== "ADMIN"
-      ? (window.location.href = "http://google.com")
-      : null;
-  }, []);
 
   return (
     <Layout className="min-h-screen">

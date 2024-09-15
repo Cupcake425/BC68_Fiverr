@@ -26,4 +26,11 @@ export const congViecService = {
       },
     });
   },
+  updateCongViec: (token, id, data) => {
+    return http.put(`/cong-viec/${id}`, data, {
+      headers: {
+        token,
+      },
+    });
+  },
 };

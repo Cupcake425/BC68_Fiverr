@@ -24,8 +24,6 @@ const ManagerUser = () => {
     skill: [],
     certification: [],
   });
-  console.log(userValue);
-  const [loading, setLoading] = useState(false);
   const [listSkill, setListSkill] = useState([]);
   const { handleNotification } = useContext(NotificationContext);
   const dispatch = useDispatch();

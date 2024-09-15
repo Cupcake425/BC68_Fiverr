@@ -244,7 +244,9 @@ const Header = () => {
                   </a>
                 </Dropdown>
                 <button>English</button>
-                <a href="#">Become a Seller</a>
+                <Link to={"/admin/manager-user"}>
+                  Đi tới trang quản lý admin
+                </Link>
               </>
             )}
             <LinkCustom

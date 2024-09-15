@@ -5,7 +5,6 @@ export const getValueUserApi = createAsyncThunk(
   "nguoiDung/getValueUserApi",
   async (_, ThunkAPI) => {
     const result = await nguoiDungService.getAllUsers();
-    console.log(result);
     return result.data.content;
   }
 );
@@ -20,7 +19,6 @@ const nguoiDungSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getValueUserApi.fulfilled, (state, action) => {
-      console.log(action);
       state.listUsers = action.payload;
     });
     builder.addCase(getValueUserApi.pending, (state, action) => {
