@@ -244,7 +244,10 @@ const Header = () => {
                   </a>
                 </Dropdown>
                 <button>English</button>
-                <Link to={"/admin/manager-user"}>
+                <Link
+                  to={"/admin/manager-user"}
+                  className="hover:text-green-500 duration-300"
+                >
                   Đi tới trang quản lý admin
                 </Link>
               </>
