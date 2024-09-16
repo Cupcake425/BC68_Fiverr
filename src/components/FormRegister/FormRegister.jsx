@@ -76,7 +76,7 @@ const FormRegister = () => {
   });
   return (
     <div className="flex items-center justify-center flex-col h-full">
-      <h1>Form đăng ký</h1>
+      <h1 className="text-3xl font-semibold">Form đăng ký</h1>
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap">
           <InputCustom
@@ -102,7 +102,7 @@ const FormRegister = () => {
             touched={touched.email}
           />
           <InputCustom
-            contentLabel={"mật khẩu"}
+            contentLabel={"Mật khẩu"}
             name={"password"}
             placeholder={"Vui lòng nhập mật khẩu"}
             classWrapper="w-full p-3"
@@ -114,7 +114,7 @@ const FormRegister = () => {
             touched={touched.password}
           />
           <InputCustom
-            contentLabel={"số điện thoại"}
+            contentLabel={"Số điện thoại"}
             name={"phone"}
             placeholder={"Vui lòng nhập số điện thoại"}
             classWrapper="w-1/3 p-3"
@@ -162,6 +162,7 @@ const FormRegister = () => {
             <button
               type="submit"
               className="py-3 px-6 bg-black text-white rounded w-full"
+              style={{ backgroundColor: "#013A12" }}
             >
               Đăng ký
             </button>

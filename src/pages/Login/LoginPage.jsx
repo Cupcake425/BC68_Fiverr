@@ -11,6 +11,7 @@ import { NotificationContext } from "../../App";
 import { setLocalStorage } from "../../utils/utils";
 import { useDispatch } from "react-redux";
 import { setValueUser } from "../../redux/authSlice";
+import SignHeader from "../../components/Header/SignHeader";
 
 const LoginPage = () => {
   const { handleNotification } = useContext(NotificationContext);
@@ -75,50 +76,52 @@ const LoginPage = () => {
   // NV3: thực hiện tạo một phương thức mới trong authService quản lý đăng nhập
   // NV4: Thực hiện sử dụng phương thức vừa tạo kết hợp dữ liệu người dùng để gửi cho BE kiểm tra và nhận kết quả
   return (
-    <div className="container">
-      <div className="login_content h-screen flex items-center">
-        <div className="login_img w-1/2">{View}</div>
-        <div className="login_form w-1/2 px-5">
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <h1 className="font-medium text-4xl text-center">
-              Giao diện đăng nhập
-            </h1>
-            <InputCustom
-              contentLabel={"Email"}
-              placeholder={"Vui lòng nhập email"}
-              name={"email"}
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.email}
-              touched={touched.email}
-            />
-            <InputCustom
-              contentLabel={"Password"}
-              placeholder={"Vui lòng nhập password"}
-              name={"password"}
-              type="password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.password}
-              touched={touched.password}
-            />
-            <div>
-              <button
-                type="submit"
-                className="py-3 px-5 inline-block w-full bg-black text-white rounded"
-              >
-                Đăng nhập
-              </button>
-              <Link
-                to={`/dang-ky`}
-                className="text-blue-600 mt-5 hover:underline inline-block"
-              >
-                Chưa có tài khoản? Nhấn vào đây để đăng ký
-              </Link>
-            </div>
-          </form>
+    <div>
+      <SignHeader title={"Đăng nhập"} />
+      <div className="container">
+        <div className="login_content h-screen flex items-center">
+          <div className="login_img w-1/2">{View}</div>
+          <div className="login_form w-1/2 px-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <h1 className="font-medium text-4xl text-center">Đăng nhập</h1>
+              <InputCustom
+                contentLabel={"Email"}
+                placeholder={"Vui lòng nhập email"}
+                name={"email"}
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={errors.email}
+                touched={touched.email}
+              />
+              <InputCustom
+                contentLabel={"Password"}
+                placeholder={"Vui lòng nhập password"}
+                name={"password"}
+                type="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={errors.password}
+                touched={touched.password}
+              />
+              <div>
+                <button
+                  type="submit"
+                  className="py-3 px-5 inline-block w-full bg-black text-white rounded"
+                  style={{ backgroundColor: "#013A12" }}
+                >
+                  Đăng nhập
+                </button>
+                <Link
+                  to={`/dang-ky`}
+                  className="text-blue-600 mt-5 hover:underline inline-block"
+                >
+                  Chưa có tài khoản? Nhấn vào đây để đăng ký
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
