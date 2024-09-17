@@ -1,0 +1,75 @@
+.banner .container .banner_bg {
+  background: linear-gradient(180deg, #003912 36.72%, #19aa64 141.43%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 370px;
+  border-radius: 16px;
+}
+@media screen and (min-width: 1024px) {
+  .banner .container .banner_bg {
+    background-image: url("/hero-xl-x1.webp");
+    height: 438px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .banner .container .banner_bg {
+    height: 500px;
+  }
+}
+.banner .container .banner_bg h1 {
+  letter-spacing: -2.4px;
+}
+.banner .container .banner_bg h1 span {
+  font-size: 63px;
+  letter-spacing: -1.89px;
+  color: #1dbf73;
+}
+.banner .container .banner_bg .search_bar {
+  width: 70%;
+}
+@media screen and (min-width: 1024px) {
+  .banner .container .banner_bg .search_bar {
+    width: 40%;
+  }
+}
+.banner .container .banner_bg .search_bar .search_form {
+  border-radius: 12px;
+}
+.banner .container .banner_bg .search_bar .search_form .search_input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.banner .container .banner_bg .search_bar .search_form .search_input input {
+  height: 60px;
+  border-radius: 12px;
+  outline: none;
+  width: 80%;
+}
+.banner .container .banner_bg .search_bar .search_form .search_input button {
+  background-color: #003912;
+  border-radius: 12px;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner .container .banner_bg .search_bar .search_form .search_input button .button_icon {
+  fill: white;
+}
+.banner .container .banner_bg .search_bar .search_form .search_input button:hover {
+  background-color: #126f43;
+}
+.banner .container .banner_bg .trustedby {
+  color: #809d89;
+}
+.banner .container .banner_bg .trustedby span {
+  font-size: 12px;
+}
+.banner .container .banner_bg .trustedby img {
+  filter: brightness(0) saturate(100%) invert(42%) sepia(24%) saturate(1121%) hue-rotate(95deg) brightness(96%) contrast(87%);
+  height: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}/*# sourceMappingURL=Banner.css.map */

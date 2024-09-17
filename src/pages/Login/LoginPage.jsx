@@ -12,7 +12,7 @@ import { setLocalStorage } from "../../utils/utils";
 import { useDispatch } from "react-redux";
 import { setValueUser } from "../../redux/authSlice";
 import SignHeader from "../../components/Header/SignHeader";
-
+import Lottie from "lottie-react";
 const LoginPage = () => {
   const { handleNotification } = useContext(NotificationContext);
   const navigate = useNavigate();
@@ -79,7 +79,9 @@ const LoginPage = () => {
       <SignHeader title={"Đăng nhập"} />
       <div className="container">
         <div className="login_content h-screen flex items-center">
-          <div className="login_img w-1/2">{View}</div>
+          <div className="login_img w-1/2">
+            <Lottie animationData={signInAnimation} loop={true} />
+          </div>
           <div className="login_form w-1/2 px-5">
             <form onSubmit={handleSubmit} className="space-y-5">
               <h1 className="font-medium text-4xl text-center">Đăng nhập</h1>

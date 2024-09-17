@@ -4,3 +4,13 @@
 .ant-modal {
   top: 30px !important;
 }
+.ant-modal-root {
+  .ant-modal-wrap {
+    overflow: hidden;
+    .ant-modal {
+      .ant-modal-content {
+        box-shadow: none;
+      }
+    }
+  }
+}

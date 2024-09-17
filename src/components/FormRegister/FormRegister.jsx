@@ -76,11 +76,8 @@ const FormRegister = () => {
   });
   return (
     <div className="flex items-center justify-center flex-col h-full">
-<<<<<<< HEAD
       <h1 className="font-medium text-4xl text-center">Sign up</h1>
-=======
-      <h1 className="text-3xl font-semibold">Form đăng ký</h1>
->>>>>>> haDev
+
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap">
           <InputCustom
@@ -165,12 +162,8 @@ const FormRegister = () => {
           <div className="w-full p-3">
             <button
               type="submit"
-<<<<<<< HEAD
-              className="py-3 px-6 bg-black text-white rounded w-full hover:opacity-85"
-=======
               className="py-3 px-6 bg-black text-white rounded w-full"
               style={{ backgroundColor: "#013A12" }}
->>>>>>> haDev
             >
               Đăng ký
             </button>
