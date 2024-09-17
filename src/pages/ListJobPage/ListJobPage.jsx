@@ -56,9 +56,9 @@ const ListJobPage = () => {
                   <hr className="w-full my-1 border-gray-300" />
                   <div className="flex items-center justify-between mb-2">
                     <i class="fa-solid fa-heart"></i>
-                    <div className="space-x-3">
-                      <span className="uppercase">Starting at:</span>
-                      <span>{item.congViec.giaTien}</span>
+                    <div>
+                      <span className="uppercase">Price: </span>
+                      <span>{`${item.congViec.giaTien} $`}</span>
                     </div>
                   </div>
                 </div>

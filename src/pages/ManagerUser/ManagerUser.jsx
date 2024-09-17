@@ -25,7 +25,7 @@ const ManagerUser = () => {
     certification: [],
   });
   const [listSkill, setListSkill] = useState([]);
-  const { handleNotification } = useContext(NotificationContext);
+  const { handleNotification = () => {} } = useContext(NotificationContext);
   const dispatch = useDispatch();
   const { listUsers } = useSelector((state) => state.nguoiDungSlice);
   const [isModalOpen, setIsModalOpen] = useState(false);
