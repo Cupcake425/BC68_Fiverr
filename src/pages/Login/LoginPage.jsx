@@ -13,40 +13,29 @@ import { useDispatch } from "react-redux";
 import { setValueUser } from "../../redux/authSlice";
 import SignHeader from "../../components/Header/SignHeader";
 import Lottie from "lottie-react";
+import { pathDefault } from "../../common/path";
+import useResponsive from "../../hooks/useResponsive";
 const LoginPage = () => {
   const { handleNotification } = useContext(NotificationContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const options = {
-    animationData: signInAnimation,
-    loop: true,
-  };
-
+  const isResponsive = useResponsive({
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    xxl: 1536,
+  });
   const { values, errors, handleChange, handleBlur, handleSubmit, touched } =
     useFormik({
       initialValues: {
         email: "",
         password: "",
       },
-      // onSubmit: (values) => {
-      //   console.log(values);
-      //   authService
-      //     .signIn({ ...values })
-      //     .then((res) => {
-      //       console.log(res);
-      //       handleNotification("Đăng nhập thành công", "success");
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //       handleNotification("Đăng nhập thất bại", "error");
-      //     });
-      // },
       onSubmit: async (values) => {
-        console.log(values);
         try {
           const result = await authService.signIn(values);
           handleNotification("Đăng nhập thành công", "success");
-          console.log(result);
           setLocalStorage("user", result.data.content);
           dispatch(setValueUser(result.data.content));
           setTimeout(() => {
@@ -69,20 +58,16 @@ const LoginPage = () => {
           .max(10, notiValidation.max(10)),
       }),
     });
-  // NV1: Thực hiện khai báo formik trong loginPage và thực hiện xử lý lấy dữ liệu người dùng khi bấm đăng nhập
-  // NV2: thực hiện validation dữ liệu của 2 input thông qua thứ nhất: 2 input đều phải nhập dữ liệu, input email kiểm tra dữ liệu có phải email, còn input mật khẩu
-  // kiểm tra tối thiểu 6 và tối đa 10 ký tự
-  // NV3: thực hiện tạo một phương thức mới trong authService quản lý đăng nhập
-  // NV4: Thực hiện sử dụng phương thức vừa tạo kết hợp dữ liệu người dùng để gửi cho BE kiểm tra và nhận kết quả
+
   return (
     <div>
       <SignHeader title={"Đăng nhập"} />
       <div className="container">
         <div className="login_content h-screen flex items-center">
-          <div className="login_img w-1/2">
+          <div className="login_img hidden xl:block w-1/2">
             <Lottie animationData={signInAnimation} loop={true} />
           </div>
-          <div className="login_form w-1/2 px-5">
+          <div className="login_form w-full xl:w-1/2 px-5">
             <form onSubmit={handleSubmit} className="space-y-5">
               <h1 className="font-medium text-4xl text-center">Đăng nhập</h1>
               <InputCustom
@@ -115,7 +100,7 @@ const LoginPage = () => {
                   Đăng nhập
                 </button>
                 <Link
-                  to={`/dang-ky`}
+                  to={pathDefault.register}
                   className="text-blue-600 mt-5 hover:underline inline-block"
                 >
                   Chưa có tài khoản? Nhấn vào đây để đăng ký
