@@ -14,8 +14,8 @@ const RegisterPage = () => {
     <div>
       <SignHeader title={"Đăng ký"} />
       <div className="flex">
-        <div className="w-1/2">{View}</div>
-        <div className="w-1/2">
+        <div className="w-1/2 hidden md:block">{View}</div>
+        <div className="w-full md:w-1/2">
           <FormRegister />
         </div>
       </div>

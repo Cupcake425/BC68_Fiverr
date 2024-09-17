@@ -58,7 +58,7 @@ const LoginPage = () => {
       <SignHeader title={"Đăng nhập"} />
       <div className="container">
         <div className="login_content h-screen flex items-center">
-          <div className="login_img hidden xl:block w-1/2">
+          <div className="login_img hidden md:block md:w-1/2">
             <Lottie animationData={signInAnimation} loop={true} />
           </div>
           <div className="login_form w-full xl:w-1/2 px-5">
