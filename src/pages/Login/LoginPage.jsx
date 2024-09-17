@@ -19,13 +19,7 @@ const LoginPage = () => {
   const { handleNotification } = useContext(NotificationContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isResponsive = useResponsive({
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280,
-    xxl: 1536,
-  });
+
   const { values, errors, handleChange, handleBlur, handleSubmit, touched } =
     useFormik({
       initialValues: {
