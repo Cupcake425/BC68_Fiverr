@@ -46,9 +46,10 @@ const LoginPage = () => {
         try {
           const result = await authService.signIn(values);
           handleNotification("Đăng nhập thành công", "success");
-          console.log(result);
-          setLocalStorage("user", result.data.content);
-          dispatch(setValueUser(result.data.content));
+          console.log("result: ", result);
+          console.log(result?.data.content);
+          // setLocalStorage("user", result.data.content);
+          // dispatch(setValueUser(result.data.content));
           setTimeout(() => {
             navigate("/");
           }, 2000);
@@ -78,8 +79,8 @@ const LoginPage = () => {
     <div>
       <SignHeader title={"Đăng nhập"} />
       <div className="container">
-        <div className="login_content h-screen flex items-center">
-          <div className="login_img w-1/2">
+        <div className="login_content h-screen flex items-center ">
+          <div className="login_img w-1/2 ">
             <Lottie animationData={signInAnimation} loop={true} />
           </div>
           <div className="login_form w-1/2 px-5">
