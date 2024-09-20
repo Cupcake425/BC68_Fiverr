@@ -71,7 +71,7 @@ const Header = () => {
   useEffect(() => {
     congViecService
       .layMenuLoaiCongViec()
-      .then((res) => setDropDownMenu(res.data.content))
+      .then((res) => setDropDownMenu(res.data.content.slice(0, 5)))
       .catch((err) => console.log(err));
   }, []);
   const items = [

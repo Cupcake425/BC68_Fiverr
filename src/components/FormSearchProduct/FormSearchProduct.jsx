@@ -86,7 +86,7 @@ const FormSearchProduct = ({ className }) => {
           >
             <input
               type="text"
-              placeholder="What service are you looking for today?"
+              placeholder={`Try searching for "design"`}
               className="flex-1 focus:border-none focus:outline-none"
               onChange={handleChange}
               onFocus={() => valueSearch && setCheckDropdown(true)}

@@ -112,7 +112,7 @@ const Banner = () => {
                 >
                   <input
                     type="text"
-                    placeholder="Search for any service..."
+                    placeholder={`Try searching for "design"`}
                     onChange={handleChange}
                     onFocus={() => valueSearch && setCheckDropdown(true)}
                     value={valueSearch}
