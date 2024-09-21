@@ -12,7 +12,7 @@ const RegisterPage = () => {
   const { View } = useLottie(options);
   return (
     <div>
-      <SignHeader title={"Đăng ký"} />
+      <SignHeader title={"Sign up"} />
       <div className="flex">
         <div className="w-1/2 hidden md:block">{View}</div>
         <div className="w-full md:w-1/2">

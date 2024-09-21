@@ -55,7 +55,7 @@ const LoginPage = () => {
 
   return (
     <div>
-      <SignHeader title={"Đăng nhập"} />
+      <SignHeader title={"Sign in"} />
       <div className="container">
         <div className="login_content h-screen flex items-center">
           <div className="login_img hidden md:block md:w-1/2">

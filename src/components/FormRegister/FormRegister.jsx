@@ -43,7 +43,6 @@ const FormRegister = () => {
           setTimeout(() => {
             navigate("/dang-nhap");
           }, 2000);
-          console.log(res);
         })
         .catch((err) => handleNotification(err.response.data.content, "error"));
     },

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import IconLogoHeader from "../Icon/IconLogoHeader";
 import { pathDefault } from "../../common/path";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
@@ -11,6 +11,7 @@ import IconFiverrPro from "../Icon/IconFiverrPro";
 import IconFiverrPro2 from "../Icon/IconFiverrPro2";
 import { congViecService } from "../../services/congViec.service";
 import useResponsive from "../../hooks/useResponsive";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const isResponsive = useResponsive({
@@ -25,7 +26,8 @@ const Header = () => {
   const [dropDownMenu, setDropDownMenu] = useState([]);
   const sidebarRef = useRef(null);
   const buttonRef = useRef(null);
-
+  const { user } = useSelector((state) => state.authSlice);
+  const navigate = useNavigate();
   const isActive = () => {
     window.scrollY > 350 ? setActive(true) : setActive(false);
   };
@@ -111,6 +113,21 @@ const Header = () => {
       ),
     },
   ];
+  const userItem = [
+    {
+      key: "1",
+      label: (
+        <button
+          onClick={() => {
+            localStorage.removeItem("user");
+            window.location.reload();
+          }}
+        >
+          Log Out
+        </button>
+      ),
+    },
+  ];
   return (
     <header className="sticky top-0 z-40 bg-white ">
       <div className="container">
@@ -157,20 +174,7 @@ const Header = () => {
                     ref={sidebarRef}
                     className="sidebar fixed top-0 left-0 h-full !m-0 space-y-4"
                   >
-                    <LinkCustom
-                      content={"Sign up"}
-                      to={pathDefault.register}
-                      className={
-                        "py-2 px-5 w-1/2 text-center border-green-600 text-green-600 hover:bg-green-600 hover:text-white border hover:border-white duration-300 rounded"
-                      }
-                    />
-                    <LinkCustom
-                      content={"Sign in"}
-                      to={pathDefault.login}
-                      className={
-                        "text-gray-700 hover:text-green-500 duration-300"
-                      }
-                    />
+                    <FormSearchProduct />
                     <div className={` flex flex-col mt-1 container space-y-4 `}>
                       {dropDownMenu.map((item, index) => {
                         const dropDown = item.dsNhomChiTietLoai.flatMap(
@@ -217,13 +221,15 @@ const Header = () => {
             <Link to={pathDefault.homePage} className="py-5">
               <IconLogoHeader />
             </Link>
-            <FormSearchProduct
-              className={`${
-                active || pathname !== pathDefault.homePage
-                  ? "visible opacity-100"
-                  : "invisible opacity-0"
-              } duration-300`}
-            />
+            {!isResponsive.lg && (
+              <FormSearchProduct
+                className={`${
+                  active || pathname !== pathDefault.homePage
+                    ? "visible opacity-100"
+                    : "invisible opacity-0"
+                } duration-300`}
+              />
+            )}
           </div>
           <nav className="header_navigation space-x-2 lg:space-x-3 xl:space-x-5">
             {!isResponsive.lg && (
@@ -243,27 +249,45 @@ const Header = () => {
                     </Space>
                   </a>
                 </Dropdown>
-                <button>English</button>
-                <Link
-                  to={"/admin/manager-user"}
-                  className="hover:text-green-500 duration-300"
-                >
-                  Đi tới trang quản lý admin
-                </Link>
+                {user && (
+                  <Link
+                    to={"/admin/manager-user"}
+                    className="hover:text-green-500 duration-300"
+                  >
+                    Đi tới trang quản lý admin
+                  </Link>
+                )}
               </>
             )}
-            <LinkCustom
-              content={"Sign in"}
-              to={pathDefault.login}
-              className={"text-gray-700 hover:text-green-500 duration-300"}
-            />
-            <LinkCustom
-              content={"Sign up"}
-              to={pathDefault.register}
-              className={
-                "py-2 px-5 border-green-600 text-green-600 hover:bg-green-600 hover:text-white border hover:border-white duration-300 rounded"
-              }
-            />
+            {user ? (
+              <Dropdown
+                menu={{
+                  items: userItem,
+                }}
+              >
+                <a
+                  className="cursor-pointer hover:text-green-500 duration-300"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <Space>{`Hello ${user?.user.name}`}</Space>
+                </a>
+              </Dropdown>
+            ) : (
+              <>
+                <LinkCustom
+                  content={"Sign in"}
+                  to={pathDefault.login}
+                  className={"text-gray-700 hover:text-green-500 duration-300"}
+                />
+                <LinkCustom
+                  content={"Sign up"}
+                  to={pathDefault.register}
+                  className={
+                    "py-2 px-5 border-green-600 text-green-600 hover:bg-green-600 hover:text-white border hover:border-white duration-300 rounded"
+                  }
+                />
+              </>
+            )}
           </nav>
         </div>
       </div>
