@@ -23,7 +23,7 @@ const ManagerJob = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { handleNotification } = useContext(NotificationContext);
   const { user } = useSelector((state) => state.authSlice);
-  console.log(user);
+
   const showModal = (record) => {
     setJobValue({
       id: record.id,
@@ -93,6 +93,7 @@ const ManagerJob = () => {
       render: (text) => {
         return <img className="h-14" src={text} />;
       },
+      responsive: ["lg"],
     },
 
     // USER ADMIN

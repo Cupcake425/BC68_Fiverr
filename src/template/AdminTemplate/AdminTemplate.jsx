@@ -9,16 +9,32 @@ import {
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import { Link, Outlet } from "react-router-dom";
+import useResponsive from "../../hooks/useResponsive";
 const { Header, Sider, Content } = Layout;
 const AdminTemplate = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const isResponsive = useResponsive({
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    xxl: 1536,
+  });
+
+  useEffect(() => {
+    if (isResponsive.lg) {
+      setCollapsed(true);
+    } else {
+      setCollapsed(false);
+    }
+  }, [isResponsive.lg]);
 
   return (
     <Layout className="min-h-screen">
-      <Sider trigger={null} collapsible collapsed={collapsed}>
+      <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
         <div className="demo-logo-vertical" />
         <Menu
           theme="dark"

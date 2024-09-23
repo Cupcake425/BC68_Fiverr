@@ -8,10 +8,6 @@ import "./ManagerUser.scss";
 import InputCustom from "../../components/InputCustom/InputCustom";
 import { skillService } from "../../services/skill.service";
 
-// Thực hiện tạo 1 service dùng quản lý các API về người dùng
-// Cấu hình một phương thức dùng để xóa người dùng trong hệ thống (khi gọi tới phương thức cần truyền ID của người dùng đang muốn xóa)
-// Sau khi đã cấu hình phương thức, quay trở lại component managerUser và xử ký tạo sự kiện click tương tác với nút xóa dùng để xóa người dùng
-
 const ManagerUser = () => {
   const [userValue, setUserValue] = useState({
     name: "",
@@ -35,7 +31,7 @@ const ManagerUser = () => {
       name: record.name,
       email: record.email,
       phone: record.phone,
-      birthday: record.birthday.split("-").reverse().join("-"), // Adjust date format
+      birthday: record.birthday.split("-").reverse().join("-"),
       gender: record.gender,
       role: record.role,
       skill: record.skill || [],
@@ -95,6 +91,7 @@ const ManagerUser = () => {
       title: "Name",
       dataIndex: "name",
       key: "name",
+      responsive: ["md"],
     },
     {
       title: "Avatar",
@@ -103,6 +100,7 @@ const ManagerUser = () => {
       render: (text) => {
         return <img className="h-14" src={text} />;
       },
+      responsive: ["lg"],
     },
     {
       title: "Email",
@@ -115,6 +113,7 @@ const ManagerUser = () => {
       render: (text) => {
         return <Tag color={text ? "blue" : "cyan"}>{text ? "Nam" : "Nữ"}</Tag>;
       },
+      responsive: ["xl"],
     },
 
     // USER ADMIN
@@ -126,12 +125,12 @@ const ManagerUser = () => {
           {text}
         </Tag>
       ),
+      responsive: ["xl"],
     },
     {
       title: "Action",
       key: "action",
       render: (_, record) => {
-        console.log("record: ", record);
         return (
           <Space size="middle" className="space-x-3">
             <button
@@ -195,9 +194,7 @@ const ManagerUser = () => {
                     value={userValue.birthday.split("-").reverse().join("-")}
                     type="date"
                     onChange={(event) => {
-                      // const arrDate = event.target.value.split("-").reverse().join("-");
                       const [year, month, day] = event.target.value.split("-");
-                      // console.log(arrDate);
                       const arrDate = `${day}-${month}-${year}`;
                       setUserValue({ ...userValue, birthday: arrDate });
                     }}
